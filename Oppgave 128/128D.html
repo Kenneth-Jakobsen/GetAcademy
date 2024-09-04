@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main--div">
+        Ditt Valg:
+        <button onclick="stein()">Stein</button>
+        <button onclick="saks()">Saks</button>
+        <button onclick="papir()">Papir</button>
+    </div>
+    <div id="game--div">
+
+    </div>
+    <div id="points--div">
+    </div>
+</body>
+</html>
+
+
+<script>
+
+    let spillerPoeng = 0
+    let dataMaskinPoeng = 0
+
+
+
+    function drawPoints(){
+        document.getElementById('points--div').innerHTML = `
+        <span>Dine poeng: ${spillerPoeng}</span>
+        <span>Datamasking poeng: ${dataMaskinPoeng}</span>
+        `
+    }
+
+
+    function getRandom() {
+        return 1 + Math.floor(Math.random() * 3);
+    }
+
+    function stein(){
+       let spillerValg = 3
+        let dataMaskingValg = getRandom()
+        determineWinner(spillerValg, dataMaskingValg)
+        document.getElementById('game--div').innerHTML = `Du valgte ${getChoiceName(spillerValg)}, Datamaskin valgte ${getChoiceName(dataMaskingValg)} `
+        drawPoints()
+    }
+
+    function saks(){
+       let spillerValg = 2
+        let dataMaskingValg = getRandom()
+        determineWinner(spillerValg, dataMaskingValg)
+        document.getElementById('game--div').innerHTML = `Du valgte ${getChoiceName(spillerValg)}, Datamaskin valgte ${getChoiceName(dataMaskingValg)} `
+        drawPoints()
+    }
+
+    function papir(){
+       let spillerValg = 1
+        let dataMaskingValg = getRandom()
+        determineWinner(spillerValg, dataMaskingValg)
+        document.getElementById('game--div').innerHTML = `Du valgte ${getChoiceName(spillerValg)}, Datamaskin valgte ${getChoiceName(dataMaskingValg)} `
+        drawPoints()
+    }
+
+    function getChoiceName(choice) {
+        switch (choice) {
+            case 1: return 'Papir';
+            case 2: return 'Saks';
+            case 3: return 'Stein';
+        }
+    }
+
+    function determineWinner(player1, player2) {
+    if (player1 === player2) {
+         "";
+    } else if (
+        (player1 === 1 && player2 === 3) ||  
+        (player1 === 2 && player2 === 1) ||  
+        (player1 === 3 && player2 === 2)    
+    ) {
+         spillerPoeng++;
+    } else {
+         dataMaskinPoeng++;
+    }
+}
+
+
+
+</script>

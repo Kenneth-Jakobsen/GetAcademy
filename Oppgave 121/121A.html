@@ -1,0 +1,39 @@
+<button onclick="drawFromInput()">Legg til Rektangel</button>
+<input id="xValue" type="number" placeholder="x" />
+<input id="yValue" type="number" placeholder="y" />
+<select id="mySelect">
+  <option>Choose fill</option>
+  <option>Blue</option>
+  <option>Red</option>
+  <option>Yellow</option>
+</select>
+
+<select name="outerRing" id="outerRing">
+  <option>Choose outer</option>
+  <option>Blue</option>
+  <option>Red</option>
+  <option>Yellow</option>
+</select>
+
+<br />
+<svg
+  id="mySvg"
+  width="320"
+  height="130"
+  xmlns="http://www.w3.org/2000/svg"
+></svg>
+<script>
+  function drawFromInput() {
+    let x = parseInt(document.getElementById("xValue").value);
+    let y = parseInt(document.getElementById("yValue").value);
+    let colorValue1 = document.getElementById("mySelect").value;
+    let colorValue2 = document.getElementById("outerRing").value;
+    draw(x, y, colorValue1, colorValue2);
+  }
+
+  function draw(x, y, color1, color2) {
+    document.getElementById("mySvg").innerHTML = `
+      <rect width="200" height="100" x="${x}" y="${y}" rx="20" ry="20" fill="${color1}" stroke="${color2}" stroke-width="3" />
+    `;
+  }
+</script>

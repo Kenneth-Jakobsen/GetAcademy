@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main--div {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); 
+            grid-template-rows: repeat(2, 1fr);    
+            gap: 5px; 
+            width: 200px; 
+            height: 200px;
+        }
+
+        .grid-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: lightgrey; 
+            border: 1px solid #ccc; 
+        }
+
+        .yellow{
+            background-color: yellow; 
+        }
+
+    </style>
+</head>
+<body>
+    <div id="main--div">
+    </div>
+    <span id="time--span"></span>
+</body>
+</html>
+
+
+<script>
+
+let randomIndex = getRandomNumber(0,3)
+let startTime = ''
+
+function changeIndex(){
+    let endTime = new Date()
+    let totalTime = (endTime - startTime) / 1000
+    randomIndex = getRandomNumber(0,3)
+    document.getElementById('time--span').innerHTML = `You used ${totalTime} seconds to react`
+    selectedIndex(randomIndex)
+}
+
+
+    function selectedIndex(param){
+        startTime = new Date();
+        document.getElementById('main--div').innerHTML = `
+        <div class='grid-item ${param==0 ?  `yellow`:'' }'${param == 0 ? 'onclick=changeIndex()' : ''} ></div>
+        <div class='grid-item ${param==1 ?  `yellow`:'' }'${param == 1 ? 'onclick=changeIndex()' : ''} ></div>
+        <div class='grid-item ${param==2 ?  `yellow`:'' }'${param == 2 ? 'onclick=changeIndex()' : ''} ></div>
+        <div class='grid-item ${param==3 ?  `yellow`:'' }'${param == 3 ? 'onclick=changeIndex()' : ''} ></div>
+   ` 
+    }
+
+    selectedIndex(randomIndex)
+
+    function getRandomNumber(min, max) {
+    return min + Math.floor(Math.random() * (max - min + 1));
+}
+</script>

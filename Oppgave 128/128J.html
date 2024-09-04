@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main--div {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            grid-template-rows: repeat(3, 1fr);    
+            gap: 3px; 
+            width: 200px; 
+            height: 200px;
+            border: solid 1px;
+        }
+
+        .grid--item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: lightgrey; 
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .yellow{
+            background-color: yellow; 
+        }
+
+    </style>
+</head>
+<body>
+    <div id="main--div">
+        <div class="grid--item" id="square1" onclick="movePiece(this,'square2', 'square4',)">5</div>
+        <div class="grid--item" id="square2" onclick="movePiece(this,'square1', 'square5', 'square3')">2</div>
+        <div class="grid--item" id="square3" onclick="movePiece(this, 'square2', 'square6',)">4</div>
+        <div class="grid--item" id="square4" onclick="movePiece(this, 'square1', 'square5', 'square7')">3</div>
+        <div class="grid--item" id="square5" onclick="movePiece(this, 'square2', 'square4', 'square6', 'square8')">1</div>
+        <div class="grid--item" id="square6" onclick="movePiece(this, 'square3', 'square5', 'square0')">6</div>
+        <div class="grid--item" id="square7" onclick="movePiece(this, 'square4', 'square8')">8</div>
+        <div class="grid--item" id="square8" onclick="movePiece(this, 'square5', 'square7', 'square0')">7</div>
+        <div class="grid--item" id="square0" onclick="movePiece(this, 'square6', 'square8')"></div>
+    </div>
+</body>
+</html>
+
+<script>
+
+let emptySquare = document.getElementById('square0')
+
+function movePiece(div, param2, param3, param4, param5){
+    if (document.getElementById(param2).innerHTML=='' || document.getElementById(param3).innerHTML=='' || document.getElementById(param4).innerHTML=='' || document.getElementById(param5).innerHTML==''){
+        emptySquare.innerHTML = div.innerHTML
+        div.innerHTML=''
+        emptySquare = div
+    }
+    gameEnd()
+}
+
+
+function gameEnd(){
+   let square1 =  document.getElementById('square1').innerHTML
+   let square2 =  document.getElementById('square2').innerHTML
+   let square3 =  document.getElementById('square3').innerHTML
+   let square4 =  document.getElementById('square4').innerHTML
+   let square5 =  document.getElementById('square5').innerHTML
+   let square6 =  document.getElementById('square6').innerHTML
+   let square7 =  document.getElementById('square7').innerHTML
+   let square8 =  document.getElementById('square8').innerHTML
+   let square0 =  document.getElementById('square0').innerHTML
+    if (square1==1&&square2==2&&square3==3&&square4==4&&square5==5&&square6==6&&square7==7&&square8==8&&square0==""){
+        console.log('You won')
+    }
+}
+
+</script>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main--div">
+
+            <div id="points--div">
+            </div>
+            <div id="increase--point">
+                <button onclick="increasePoint()">+</button>
+                <button onclick="upgradePoints()">Upgrade</button>
+            </div>
+    </div>
+</body>
+</html>
+
+
+
+<script>
+
+    let points = 0
+    let upgrades = 1
+
+    function increasePoint(){
+        points += upgrades
+        drawPoints()
+    }
+
+    function upgradePoints(){
+        if (points >= 10){
+            upgrades ++
+            points -= 10
+            drawPoints()
+        }
+       
+    }
+
+    function drawPoints(){
+        document.getElementById('points--div').innerHTML = points
+    }
+
+    drawPoints()
+
+</script>

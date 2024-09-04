@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="main--div">
+      <button onclick="drawForm()">Create form</button>
+      <br />
+    </div>
+  </body>
+
+  <script>
+    function drawForm() {
+      drawField("fName", "First Name", "text");
+      drawField("lName", "Last Name", "text");
+      drawField("range", "En til Hundre", "range");
+      drawField("number", "Skriv ett tall", "number");
+      drawField("bike", "Bike", "checkBox");
+    }
+
+    function drawField(id, label, type, radioGroupName) {
+      let minMaxStep = "";
+      let breakTag = `<br />`;
+      let labelTag = `<label for=${id}>${label}</label>`;
+      let fieldTag = `<input type=${type} ${minMaxStep} id=${id} />`;
+      if (type == "range") {
+        minMaxStep = `min="1" max="100" step="1"`;
+      }
+      let html = label + breakTag + fieldTag + breakTag;
+      if (type == "radio") {
+        html = /*html*/ `
+        <input type="${type}" name="${radioGroupName}" id=${id}>
+        <label for=${id}>${label}</label>;
+        <br />
+
+        `;
+      }
+
+      if (type == "checkbox") {
+        html = /*html*/ `
+        <input type="${type}" id="${id}" name="${label}" value="${label}">
+        <label for="${name}">${label}</label><br/>
+        `;
+      }
+
+      document.getElementById("main--div").innerHTML += html;
+    }
+  </script>
+</html>

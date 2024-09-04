@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="myDiv">Im a title</div>
+
+    <div>
+      <button onclick="increaseFontSize()">Increase font size</button>
+      <button onclick="decreaseFontSize()">Decrease font size</button>
+    </div>
+
+    <script>
+      function increaseFontSize() {
+        let currentFontSize = "24px";
+        document.getElementById("myDiv").style.fontSize = `${currentFontSize}`;
+      }
+
+      function decreaseFontSize() {
+        let currentFontSize = "12px";
+        document.getElementById("myDiv").style.fontSize = `${currentFontSize}`;
+      }
+    </script>
+  </body>
+</html>

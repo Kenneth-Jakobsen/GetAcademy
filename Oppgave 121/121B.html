@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    td,
+    th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    th {
+      background-color: #04aa6d;
+      color: white;
+    }
+  </style>
+
+  <body>
+    <table id="myTable">
+      <tr>
+        <th>Dag</th>
+        <th>Time</th>
+        <th>Minutt</th>
+        <th>Temperatur</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>10</td>
+        <td>0</td>
+        <td>5</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>10</td>
+        <td>15</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>10</td>
+        <td>30</td>
+        <td>7</td>
+      </tr>
+    </table>
+
+    <div id="inputTable">
+      <input type="number" id="Dag" placeholder="Dag" />
+      <input type="number" id="Time" placeholder="Time" />
+      <input type="number" id="Minutt" placeholder="Minutt" />
+      <input type="number" id="Temperatur" placeholder="Temperatur" />
+      <button onclick="drawRow()">Legg til Rad</button>
+    </div>
+  </body>
+</html>
+
+<script>
+  function drawRow() {
+    let dag = document.getElementById("Dag").value;
+    let time = document.getElementById("Time").value;
+    let minutt = document.getElementById("Minutt").value;
+    let temperatur = document.getElementById("Temperatur").value;
+    addRow(dag, time, minutt, temperatur);
+  }
+
+  function addRow(dag, time, minutt, temperatur) {
+    document.getElementById("myTable").innerHTML += `  <tr>
+        <td>${dag}</td>
+        <td>${time}</td>
+        <td>${minutt}</td>
+        <td>${temperatur}</td>
+      </tr>`;
+  }
+</script>

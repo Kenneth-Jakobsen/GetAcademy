@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #input--div{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            width: 200px;
+            height: 200px;
+            border: solid 1px black;
+
+        }
+        #calculator--display{
+            grid-column: span 4;
+        }
+    </style>
+</head>
+<body>
+    <div id="input--div">
+       
+    </div>
+</body>
+</html>
+
+<script>
+
+
+function calcValue(choice){
+document.getElementById('calculator--display').value+= choice
+}
+function equals(){
+    let display = document.getElementById('calculator--display')
+    display.value = eval(display.value)
+}
+
+
+function drawCalculator(){
+    document.getElementById('input--div').innerHTML = ` 
+        <input type="text" name="display" id="calculator--display" readonly>
+        <button onclick="calcValue(1)">1</button>
+        <button onclick="calcValue(2)">2</button>
+        <button onclick="calcValue(3)">3</button>
+        <button onclick="calcValue('-')">-</button>
+        <button onclick="calcValue(4)">4</button>
+        <button onclick="calcValue(5)">5</button>
+        <button onclick="calcValue(6)">6</button>
+        <button onclick="calcValue('+')">+</button>
+        <button onclick="calcValue(7)">7</button>
+        <button onclick="calcValue(8)">8</button>
+        <button onclick="calcValue(9)">9</button>
+        <button onclick="calcValue('*')">*</button>
+        <button onclick="calcValue(0)">0</button>
+        <button onclick="equals()">=</button>
+        <button onclick="clearDisplay()">C</button>
+        <button onclick="calcValue('/')">/</button>`
+}
+
+
+function clearDisplay(){
+    document.getElementById('calculator--display').value = '0'
+}
+
+drawCalculator()
+
+</script>
+

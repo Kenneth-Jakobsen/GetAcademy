@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eksempel 1</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <div class="buttons">
+      <button onclick="clearAll()">Clear</button>
+      <button>Vertikal layout</button>
+      <button>Horisontal layout</button>
+      <button>Grid layout</button>
+    </div>
+
+    <h1>Eksempel 1</h1>
+
+    <div class="cards">
+      <div class="card">
+        <div class="header--div green" onclick="showVerktoy()">
+          <h2 class="card--title">Verktoy</h2>
+        </div>
+        <div class="inner--card" id="verktoy"></div>
+      </div>
+
+      <div class="card">
+        <div class="header--div blue" onclick="showHtml()">
+          <h2 class="card--title">HTML</h2>
+        </div>
+        <div class="inner--card" id="html"></div>
+      </div>
+
+      <div class="card">
+        <div class="header--div red" onclick="showCss()">
+          <h2 class="card--title">CSS</h2>
+        </div>
+        <div class="inner--card" id="css"></div>
+      </div>
+
+      <div class="card">
+        <div class="header--div yellow" onclick="showJavaScript()">
+          <h2 class="card--title">JavaScript</h2>
+        </div>
+        <div class="inner--card" id="javascript"></div>
+      </div>
+
+      <div class="card">
+        <div class="header--div dark" onclick="showGame()">
+          <h2 class="card--title">Hode, kropp og ben</h2>
+        </div>
+        <div id="game">
+          <div id="head"></div>
+          <div id="body"></div>
+          <div id="legs"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

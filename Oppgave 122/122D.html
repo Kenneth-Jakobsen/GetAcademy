@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="myDiv">Change my Font</div>
+    <div id="select--div">
+      <select id="font-select" onchange="selectFontFamily()">
+        <option>Arial</option>
+        <option>Verdana</option>
+        <option>Tahoma</option>
+        <option>Trebuchet MS</option>
+        <option>Times New Roman</option>
+        <option>Georgia</option>
+        <option>Garamond</option>
+        <option>Courier New</option>
+        <option>Brush Script MT</option>
+      </select>
+    </div>
+
+    <div>
+      <button onclick="changeRed()">Red</button>
+      <button onclick="changeGreen()">Green</button>
+      <button onclick="changeBlue()">Blue</button>
+    </div>
+  </body>
+</html>
+
+<script>
+  function selectFontFamily() {
+    let fontFam = document.getElementById("font-select").value;
+    document.getElementById("myDiv").style.fontFamily = `${fontFam}`;
+  }
+
+  let redValue = 125;
+  let greenValue = 125;
+  let blueValue = 125;
+
+  function changeRed() {
+    redValue += 5;
+    document.getElementById(
+      "myDiv"
+    ).style.backgroundColor = `rgb(${redValue},${greenValue},${blueValue})`;
+  }
+
+  function changeGreen() {
+    greenValue += 5;
+    document.getElementById(
+      "myDiv"
+    ).style.backgroundColor = `rgb(${redValue},${greenValue},${blueValue})`;
+  }
+
+  function changeBlue() {
+    blueValue += 5;
+    document.getElementById(
+      "myDiv"
+    ).style.backgroundColor = `rgb(${redValue},${greenValue},${blueValue})`;
+  }
+</script>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    #board {
+      display: grid;
+      grid-template-columns: repeat(8, 100px);
+      grid-template-rows: repeat(8, 100px);
+    }
+
+    #board > div {
+      border: solid 1px lightblue;
+    }
+
+    .selected {
+      background-color: yellow;
+    }
+  </style>
+  <body>
+    <div id="board"></div>
+    <button onclick="left()">Left</button>
+    <button onclick="right()">Right</button>
+
+    <button onclick="up()">Up</button>
+    <button onclick="down()">Down</button>
+
+    <script>
+      let startIndex = 5;
+      let size = 64;
+      const emptyDiv = `<div></div>`;
+      function showBoard() {
+        document.getElementById("board").innerHTML = "";
+
+        addEmptyDivs(startIndex);
+
+        document.getElementById(
+          "board"
+        ).innerHTML += `<div class="selected"></div>`;
+
+        addEmptyDivs(size - (startIndex + 1));
+      }
+
+      function addEmptyDivs(amount) {
+        document.getElementById("board").innerHTML += "".padEnd(
+          emptyDiv.length * amount,
+          emptyDiv
+        );
+      }
+
+      function right() {
+        if (startIndex >= 64) {
+          startIndex = 0;
+          showBoard();
+        } else {
+          startIndex++;
+          showBoard();
+        }
+      }
+
+      function left() {
+        if (startIndex == 0) {
+          startIndex = 64;
+          showBoard();
+        } else {
+          startIndex--;
+          showBoard();
+        }
+      }
+
+      function down() {
+        if (startIndex >= 64) {
+          startIndex = 0;
+          showBoard();
+        } else {
+          startIndex += 8;
+          showBoard();
+        }
+      }
+
+      function up() {
+        if (startIndex <= 0) {
+          startIndex = 0;
+          showBoard();
+        } else {
+          startIndex -= 8;
+          showBoard();
+        }
+      }
+
+      showBoard();
+    </script>
+  </body>
+</html>

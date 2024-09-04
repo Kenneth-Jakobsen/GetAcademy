@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main--div">
+        Guess the number
+        <input id="numberGame" type="number">
+        <button onclick="guess()">Guess</button>
+        
+    </div>
+</body>
+</html>
+
+
+<script>
+
+
+let secretNumber  = getRandomNumber(1,10)
+let tries = 0
+
+function getRandomNumber(min, max) {
+  return min + Math.floor(Math.random() * (max - min + 1));
+}
+
+function guess(){
+tries++
+let guessedNumber = document.getElementById('numberGame').value
+    if(guessedNumber == secretNumber){
+        return alert(`You guessed right! The Number was ${secretNumber}, you used ${tries} tries`)
+    }
+    else {
+        return alert(`you guessed wrong :( you used ${tries} tries`)
+    }
+
+}
+
+
+
+</script>

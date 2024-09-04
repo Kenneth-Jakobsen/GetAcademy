@@ -1,0 +1,61 @@
+body{
+    margin-left: 20px;
+}
+
+
+.card{
+    background-color: lightgray;
+}
+
+.header--div{
+    text-align: center;
+    border: 2px solid darkgray;
+}
+
+.cards{
+    width: 500px;
+}
+
+.card--title{
+    color: whitesmoke;
+    margin: 10px;
+}
+
+.inner--card{
+    margin: 0px 10px;
+    padding-bottom: 10px;
+    text-align: start;
+}
+
+#game{
+    text-align: center;
+}
+
+.inner--card {
+    padding: 20px;
+  }
+  
+#game {
+    margin-top: 20px;
+  }
+  
+.green {
+    background-color: #3cba54;
+}
+
+.yellow {
+    background-color: #f4c20d;
+}
+
+.red {
+    background-color: #db3236;
+}
+
+.blue {
+    background-color: #4885ed;
+}
+
+.dark{
+    background-color: black;
+}
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #my--div {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="my--div" onchange="">
+      <label for="color">Color Slider:</label>
+      <input
+        type="range"
+        id="col"
+        name="col"
+        min="0"
+        max="100"
+        onchange="colorChange()"
+      />
+    </div>
+  </body>
+  <script>
+    function colorChange() {
+      let value = document.getElementById("col").value;
+      let myDiv = document.getElementById("my--div");
+
+      if (value < 30) {
+        myDiv.style.backgroundColor = "red";
+      }
+      if (value > 70) {
+        myDiv.style.backgroundColor = "green";
+      }
+    }
+  </script>
+</html>
