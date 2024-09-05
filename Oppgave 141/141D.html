@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+</html>
+
+<script>
+
+
+let personName
+let email
+let isEditMode = true
+
+updateView()
+
+function updateView(){
+    if(isEditMode){
+        document.getElementById('app').innerHTML = /*HTML*/ `
+        Name:<input type="text" value="${personName || ''}" oninput="personName = this.value">
+        Email:<input type="text" value="${email || '' }"  oninput="email = this.value" >
+        <button onclick="submitForm()">Registrer</button>
+    
+    `
+    }
+    else {
+        document.getElementById('app').innerHTML = /*HTML*/ `
+        <span>${personName}</span>
+        <span>${email}</span>
+        <button onclick="rediger()">Rediger</button>
+    `
+    }
+
+}
+
+function rediger(){
+    isEditMode = true
+    updateView()
+}
+
+function submitForm(){
+    isEditMode = false
+    updateView()
+}
+
+</script>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+</html>
+
+<script>
+
+let color = ''
+let bgColor = ''
+
+updateView()
+
+function updateView(){
+    document.getElementById('app').innerHTML = /*HTML*/`
+    <label for="color-select">Choose a text color:</label>
+        <select name="color" id="color-select" onchange=setColor(this.value)>
+            <option value="">--Please choose an option--</option>
+            <option value='red'>Red</option>
+            <option value='blue'>Blue</option>
+            <option value='yellow'>Yellow</option>
+            <option value='pink'>Pink</option>
+            <option value='green'>Green</option>
+        </select>
+        
+        <br>
+
+        <label for="bgColor-select">Choose a background color:</label>
+        <select name="BgColor" id="bgColor-select" onchange=setBgColor(this.value)>
+            <option value="">--Please choose an option--</option>
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="yellow">Yellow</option>
+            <option value="pink">Pink</option>
+            <option value="green">Green</option>
+        </select>
+        <br>
+        <button onclick='addDiv()'>Add Div</button>
+    `
+}
+
+function setColor(selectedColor){
+    color = selectedColor
+}
+
+function setBgColor(selectedColor){
+    bgColor = selectedColor
+}
+
+function addDiv() {
+    document.body.innerHTML += /*HTML*/`
+        <div style='color:${color}; background-color:${bgColor}; width:100px; height:100px; border:1px solid black;'>
+            New Colored Div
+        </div>
+    `;
+}
+
+</script>
