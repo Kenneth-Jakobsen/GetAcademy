@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+
+</html>
+
+
+
+<script>
+
+
+    let inputText
+    isReversed = false
+    let reversedString = ''
+
+
+
+    updateView()
+
+    function updateView() {
+        document.getElementById('app').innerHTML = /*HTML*/ `
+    <input type="text" placeholder="Type in a text" oninput="inputText=this.value" value=${inputText || ''}>
+    <button onclick="reverseString()">Reverse text</button>
+    <div>${isReversed ? reversedString : ''}</div>
+    `
+    }
+
+    function reverseString() {
+        isReversed = true
+        reversedString = ''
+        let stringLength = inputText.length
+
+        while (stringLength >= 0) {
+            reversedString += inputText.charAt(stringLength)
+            stringLength--
+        }
+        updateView()
+    }
+
+</script>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+
+</html>
+
+<script>
+    updateView()
+
+    let text;
+    let repeatNumber;
+
+    function updateView() {
+        document.getElementById('app').innerHTML = /*HTML*/`
+        <input type="text" placeholder="Type a text" oninput="text=this.value" />
+        <input type ="number" placeholder="Type a number" oninput="repeatNumber=this.value">
+        <button onclick="repeatText(repeatNumber)">Repeat</button> 
+    `
+    }
+
+
+    function repeatText(value) {
+        for (let i = 0; i < value; i++) {
+            document.body.innerHTML += text
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+</script>

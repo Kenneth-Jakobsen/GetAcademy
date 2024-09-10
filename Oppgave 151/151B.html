@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+
+</html>
+
+
+<script>
+
+    let startNumber;
+    let endNumber;
+    let incriment;
+
+
+    updateView()
+    function updateView() {
+        document.getElementById('app').innerHTML = /*HTML*/`
+    <input type="number" placeholder="start number" oninput="startNumber=Number(this.value)" value=${startNumber || ""}/>
+    <input type="number" placeholder="end number" oninput="endNumber=Number(this.value)" value=${endNumber || ""}/>
+    <input type="number" placeholder="incriment" oninput="incriment=Number(this.value)" value=${incriment || ""}/>
+    <button onclick="countByincriment()">Count by incriment</button>
+    <div id="count">
+        
+        </div>
+    `
+    }
+
+
+
+    function countByincriment() {
+        while (startNumber <= endNumber) {
+            document.getElementById('count').innerHTML += `<br>${startNumber}`
+            startNumber += incriment
+        }
+    }
+
+
+</script>

@@ -5,5 +5,6 @@ function countBlackJackPoints(cards) {
         let rank = suitAndRank[1];
         points += parseInt(rank);
     }
+    
     return points;
 }

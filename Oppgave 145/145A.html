@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -45,6 +46,7 @@
 <script>
 
     let imgElem = '<img src="https://getacademy.no/hubfs/GET_RGB_logo-01-2.png">'
+    let imgIndex = 0
 
     updateView()
 
@@ -52,26 +54,26 @@
         document.getElementById('app').innerHTML =  /*HTML*/`
 
     <div class="board">
-        <div class="square">${imgElem}</div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
+        <div class="square" id='square1'>${imgIndex == 0 ? imgElem : ''}</div>
+        <div class="square" id='square2'>${imgIndex == 1 ? imgElem : ''}</div>
+        <div class="square" id='square3'>${imgIndex == 2 ? imgElem : ''}</div>
+        <div class="square" id='square4'>${imgIndex == 3 ? imgElem : ''}</div>
     </div>
+    
     <div class="buttons">
-                <button onclick="moveImg()">▲</button>
+                <button onclick="moveImg(-2)" ${imgIndex == 0 ? 'disabled' : ''}>▲</button>
                     <div>
-                        <button>◀</button>
-                        <button>▶</button>
+                        <button onclick="moveImg(-1)" ${imgIndex == 0 || imgIndex == 2 ? 'disabled' : ''}>◀</button>
+                        <button onclick="moveImg(1)" ${imgIndex == 1 || imgIndex == 3 ? 'disabled' : ''}>▶</button>
                     </div>
-                <button>▼</button>
+                <button onclick="moveImg(2)" ${imgIndex == 2 || imgIndex == 3 ? 'disabled' : ''} >▼</button>
     </div>
 `
     }
 
-    function moveImg() {
-
+    function moveImg(param) {
+        imgIndex += param
+        updateView()
     }
-
-
 
 </script>
