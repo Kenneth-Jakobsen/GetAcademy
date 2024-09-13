@@ -30,7 +30,12 @@
     }
 
     for (let i = 0; i < 4; i++) {
-        debugger
+        for (let j = 0; j < i; j++) {
+            writeSpace()
+        }
+        for (let j = 0; j < 8 - 2 * i; j++) {
+            writeHash()
+        }
         for (let j = 0; j < i; j++) {
             writeSpace()
         }

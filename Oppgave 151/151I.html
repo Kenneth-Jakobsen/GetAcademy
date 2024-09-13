@@ -11,8 +11,8 @@
 
 </body>
 <pre id="output"></pre>
-<script>
 
+<script>
     function writeHash() {
         document.getElementById('output').innerText += '#';
     }
@@ -26,28 +26,49 @@
     }
 
 
-    for (let i = 0; i < 5; i++) {
+
+    for (let i = 0; i < 4; i++) {
+
+        for (j = 0; j < i; j++) {
+            writeSpace()
+        }
+        for (let j = 0; j < i + 1; j++) {
+            writeHash()
+        }
+        for (j = 0; j < 12 - 4 * i; j++) {
+            writeSpace()
+        }
+        for (let j = 0; j < i + 1; j++) {
+            writeHash()
+        }
+        writeLineBreak()
+    }
+
+    for (let i = 0; i < 4; i++) {
+
+        for (let j = 0; j < 4 - i - 1; j++) {
+            writeSpace();
+        }
+
         for (let j = 0; j < 4 - i; j++) {
-            writeSpace()
+            writeHash();
         }
-        for (let j = 0; j < (2 * i); j++) {
-            writeHash()
+
+        for (let j = 0; j < i * 4; j++) {
+            writeSpace();
         }
-        writeLineBreak()
+
+        for (let j = 0; j < 4 - i; j++) {
+            writeHash();
+        }
+
+        writeLineBreak();
     }
-
-    for (let i = 0; i < 5; i++) {
-        for (let j = 0; j < i; j++) {
-            writeSpace()
-        }
-        for (let j = 0; j < 8 - 2 * i; j++) {
-            writeHash()
-        }
-        writeLineBreak()
-    }
-
-
 
 </script>
+
+
+
+
 
 </html>
