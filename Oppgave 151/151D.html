@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+
+</html>
+
+<script>
+
+
+    let inputText
+    let inputLetter
+
+    updateView()
+
+    function updateView() {
+        document.getElementById('app').innerHTML = /*HTML*/ `
+        <input type='text' placeholder="Type text" oninput="inputText=this.value">
+        <input type='text' placeholder="Type letter" oninput="inputLetter=this.value">
+        <button onclick="countLetters(inputText,inputLetter)">Count letters</button>
+        `
+    }
+
+
+    function countLetters(text, value) {
+        let count = 0
+        text = text.toLowerCase()
+        let lowerCaseValue = value.toLowerCase()
+        for (let letter of text) {
+            if (letter == lowerCaseValue) {
+                count++
+            }
+        }
+        document.body.innerHTML += `Your text has ${count} ${value}'s`
+    }
+
+</script>

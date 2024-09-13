@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<pre id="output"></pre>
+
+<script>
+
+
+
+
+    function writeHash() {
+        document.getElementById('output').innerText += '*';
+    }
+
+    function writeSpace() {
+        document.getElementById('output').innerText += '-';
+    }
+
+    function writeLineBreak() {
+        document.getElementById('output').innerText += '\n';
+    }
+
+    for (let i = 0; i < 4; i++) {
+        debugger
+        for (let j = 0; j < i; j++) {
+            writeSpace()
+        }
+        writeLineBreak()
+    }
+
+</script>
+
+
+
+</html>
