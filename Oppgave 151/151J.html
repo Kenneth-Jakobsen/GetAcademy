@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+
+</html>
+
+<script>
+
+    let text;
+    let wordCount
+
+    updateView()
+    function updateView() {
+        document.getElementById('app').innerHTML = /*HTML*/`
+        <input type="text" oninput="text=this.value" value=${text ?? ''} >
+        <button onclick="countWords()">Count words in text</button>
+        <button onclick="findLongestWord()">Find longest word in text</button>
+        <button onclick="findMostVocals()">Find the word with the most vocals</button>
+    `
+    }
+
+    function countWords() {
+        let textArray = text.split(' ')
+        document.body.innerHTML += `The text "${text}"" has ${textArray.length} words <br>`
+        text = ''
+        updateView()
+    }
+
+    function findLongestWord() {
+        let textArray = text.split(' ')
+        let longestWord = ''
+        for (let word of textArray) {
+            if (word.length > longestWord.length) {
+                longestWord = word
+            }
+        }
+        document.body.innerHTML += `The word "${longestWord}" is the longest in this text <br>`
+        text = ''
+        updateView()
+    }
+
+    function findMostVocals() {
+        let vowels = ['a', 'e', 'i', 'o', 'u'];
+        let textArray = text.toLowerCase().split(' ');
+        let maxVowelCount = 0;
+        let wordWithMostVowels = '';
+
+        for (let word of textArray) {
+            let vowelCount = 0;
+
+            for (let i = 0; i < word.length; i++) {
+                if (vowels.includes(word[i])) {
+                    vowelCount++;
+                }
+            }
+
+            if (vowelCount > maxVowelCount) {
+                maxVowelCount = vowelCount;
+                wordWithMostVowels = word;
+            }
+        }
+
+        document.body.innerHTML += `The word with the most vowels is: ${wordWithMostVowels} with ${maxVowelCount} vowels.`
+        updateView()
+    }
+
+</script>
