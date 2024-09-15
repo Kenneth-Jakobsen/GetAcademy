@@ -51,24 +51,23 @@
     function findMostVocals() {
         let vowels = ['a', 'e', 'i', 'o', 'u'];
         let textArray = text.toLowerCase().split(' ');
-        let maxVowelCount = 0;
-        let wordWithMostVowels = '';
+        let wordWithMostVowels = ''
+        let maxVowelCount = 0
+
 
         for (let word of textArray) {
-            let vowelCount = 0;
-
-            for (let i = 0; i < word.length; i++) {
-                if (vowels.includes(word[i])) {
-                    vowelCount++;
+            let vowelCount = 0
+            for (let char of word) {
+                if (vowels.includes(char)) {
+                    vowelCount++
                 }
             }
-
             if (vowelCount > maxVowelCount) {
-                maxVowelCount = vowelCount;
-                wordWithMostVowels = word;
+                maxVowelCount = vowelCount
+                wordWithMostVowels = word
             }
-        }
 
+        }
         document.body.innerHTML += `The word with the most vowels is: ${wordWithMostVowels} with ${maxVowelCount} vowels.`
         updateView()
     }
