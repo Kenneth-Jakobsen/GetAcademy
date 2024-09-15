@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main--div {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 3px;
+            width: 200px;
+            height: 200px;
+            border: solid 1px;
+        }
+
+        .grid--item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: lightgrey;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main--div">
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    let emptySquare
+    let numbers = [1, 2, 5, 7, null, 3, 4, 8, 6]
+
+    function movePiece(index) {
+        const emptyIndex = numbers.indexOf(null);
+        const validMoves = [index + 1, index - 1, index + 3, index - 3]
+
+
+        for (let i = 0; i < validMoves.length; i++) {
+            if (validMoves[i] < 0 || validMoves[i] > 8) {
+                validMoves.splice(i, 1)
+            }
+        }
+        if (validMoves.includes(emptyIndex)) {
+            [numbers[index], numbers[emptyIndex]] = [numbers[emptyIndex], numbers[index]]
+        }
+        console.log(index)
+        console.log(validMoves)
+        drawPuzzle()
+    }
+
+    function drawPuzzle() {
+        document.getElementById('main--div').innerHTML = ''
+        for (let i = 0; i < numbers.length; i++) {
+            document.getElementById('main--div').innerHTML += `<div class="grid--item" id="square${[i]}" onclick="movePiece(${i})">${numbers[i] ?? ' '}</div>`
+        }
+    }
+    drawPuzzle()
+
+
+    function gameEnd() {
+        let square1 = document.getElementById('square0').innerHTML
+        let square2 = document.getElementById('square1').innerHTML
+        let square3 = document.getElementById('square2').innerHTML
+        let square4 = document.getElementById('square3').innerHTML
+        let square5 = document.getElementById('square4').innerHTML
+        let square6 = document.getElementById('square5').innerHTML
+        let square7 = document.getElementById('square6').innerHTML
+        let square8 = document.getElementById('square7').innerHTML
+        let square0 = document.getElementById('square8').innerHTML
+        if (square1 == 1 && square2 == 2 && square3 == 3 && square4 == 4 && square5 == 5 && square6 == 6 && square7 == 7 && square8 == 8 && square0 == "") {
+            console.log('You won')
+        }
+    }
+
+</script>
