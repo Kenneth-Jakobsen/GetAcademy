@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        textarea {
+            resize: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+
+</html>
+
+<script>
+
+
+
+    let textValue = ''
+    updateView()
+
+    function updateView() {
+        document.getElementById('app').innerHTML = /*HTML*/ `
+        <textarea name='' id='textArea' oninput="textValue=this.value"></textarea>
+        <button onclick="countWords()">Count words</button>
+        <div id="wordCount"></div>
+    `
+    }
+
+
+
+    function countWords() {
+        let textArray = textValue.toLowerCase().split(' ')
+        let words = []
+        let wordsCounts = []
+
+        for (let i = 0; i < textArray.length; i++) {
+            for (let j = 0; j < textArray[i].length; j++) {
+                const myLetter = textArray[i][j];
+                if (!isLetter(myLetter)) {
+                    textArray[i] = textArray[i].replaceAll(myLetter, '')
+                }
+            }
+        }
+
+        textArray = textArray.filter(elem => elem)
+
+        for (let i = 0; i < textArray.length; i++) {
+            if (!words.includes(textArray[i])) {
+                words.push(textArray[i])
+                wordsCounts.push(1)
+            }
+            else {
+                wordsCounts[words.indexOf(textArray[i])]++
+            }
+        }
+        document.getElementById('wordCount').innerHTML = `${words} <br> ${wordsCounts}`
+
+    }
+
+    function isLetter(c) {
+        return c.toLowerCase() != c.toUpperCase();
+    }
+
+
+</script>

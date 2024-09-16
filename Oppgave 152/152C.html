@@ -40,13 +40,11 @@
 
 <script>
 
-    let emptySquare
     let numbers = [1, 2, 5, 7, null, 3, 4, 8, 6]
 
     function movePiece(index) {
         const emptyIndex = numbers.indexOf(null);
         const validMoves = [index + 1, index - 1, index + 3, index - 3]
-
 
         for (let i = 0; i < validMoves.length; i++) {
             if (validMoves[i] < 0 || validMoves[i] > 8) {
