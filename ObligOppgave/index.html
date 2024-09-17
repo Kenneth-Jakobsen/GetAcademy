@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        textarea {
+            resize: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    let textValue;
+
+    updateView()
+
+    function updateView() {
+        document.getElementById('app').innerHTML =  /*HTML*/`
+    <textarea name='' id='textArea' oninput="textValue=this.value"></textarea><br/>
+    <button onclick="isPalindrome()">Is this a palindrome?</button>    `
+    }
+
+
+    function isPalindrome() {
+        let cleanTextArray = cleanText(textValue)
+        let cleanTextString = cleanTextArray.join('')
+        let array = []
+
+        for (let word of cleanTextArray) {
+            array.unshift(word.split('').reverse().join(''))
+        }
+        array = (array.join(''))
+        console.log(cleanTextString)
+        console.log(array)
+        if (cleanTextString == array) {
+            console.log("true")
+        }
+        else {
+            console.log('false')
+        }
+
+
+    }
+
+
+    function cleanText(text) {
+        let textArray = text.toLowerCase().split(' ')
+        for (let i = 0; i < textArray.length; i++) {
+            for (let j = 0; j < textArray[i].length; j++) {
+                const myLetter = textArray[i][j];
+                if (!isLetter(myLetter)) {
+                    textArray[i] = textArray[i].replaceAll(myLetter, '')
+                }
+            }
+        }
+        textArray = textArray.filter(elem => elem)
+        return textArray
+    }
+
+    function isLetter(c) {
+        return c.toLowerCase() != c.toUpperCase();
+    }
+</script>
