@@ -16,7 +16,29 @@
 <script>
 
     function mostCommon(array) {
+        let count = 0
+        let mostCommonNumber
+        let frequency = 0
 
+        for (let i = 0; i < array.length; i++) {
+            debugger
+            for (let j = array.length - 1; j > i; j--) {
+                if (array[i] == array[j]) {
+                    console.log(array[i])
+                    count++
+                }
+                else {
+                    count = 1
+                }
+            }
+            if (count > frequency) {
+                frequency = count
+                mostCommonNumber = array[i]
+            }
+        }
+        console.log(mostCommonNumber)
     }
+
+    mostCommon([1, 2, 3, 4, 4, 1, 4, 4])
 
 </script>

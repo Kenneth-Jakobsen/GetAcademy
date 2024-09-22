@@ -18,13 +18,12 @@
     function frequencyTable(array) {
         let largetsNumber = Math.max(...array)
         let result = new Array(largetsNumber + 1).fill(0)
-        console.table(result)
 
         for (i = 0; i < array.length; i++) {
             const currentNumber = array[i]
-
+            result[currentNumber]++
         }
-
+        console.log(result)
     }
 
     frequencyTable([1, 2, 3, 4, 4, 1, 4])
