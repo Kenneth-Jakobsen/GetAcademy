@@ -42,21 +42,71 @@
 
     let numbers = [1, 2, 5, 7, null, 3, 4, 8, 6]
 
-    function movePiece(index) {
+    function movePiece(userSelectedIndex) {
         const emptyIndex = numbers.indexOf(null);
-        const validMoves = [index + 1, index - 1, index + 3, index - 3]
+        const potentialMoveToIndexes = [userSelectedIndex + 1, userSelectedIndex - 1, userSelectedIndex + 3, userSelectedIndex - 3];
+        // const validMoveToIndexes = potentialMoveToIndexes.filter(isValidIndex);
+        // const validMoveToIndexes = potentialMoveToIndexes.filter(function (index) { return index >= 0 && index <= 8; });
+        // const validMoveToIndexes = potentialMoveToIndexes.filter(index => index >= 0 && index <= 8);
+        removeInvalidIndexes(potentialMoveToIndexes);
+        if (potentialMoveToIndexes.includes(emptyIndex)) {
+            swapValues(emptyIndex, userSelectedIndex);
+        }
+        drawPuzzle();
+    }
 
-        for (let i = 0; i < validMoves.length; i++) {
-            if (validMoves[i] < 0 || validMoves[i] > 8) {
-                validMoves.splice(i, 1)
+    function isValidIndex(index) {
+        return index >= 0 && index <= 8;
+    }
+
+    function swapValues(indexA, indexB) {
+        [numbers[indexA], numbers[indexB]] = [numbers[indexB], numbers[indexA]];
+    }
+
+
+    /*
+          0  1  2   3   4  5  6  7
+        [ 1, 2, 3, -1, -2, 4, 5, 6];
+        [ 1, 2, 3, -2, 4, 5, 6];
+          
+    */
+
+    function removeInvalidIndexes(indexes) {
+        for (let i = 0; i < indexes.length; i++) {
+            if (indexes[i] < 0 || indexes[i] > 8) {
+                indexes.splice(i, 1);
             }
         }
-        if (validMoves.includes(emptyIndex)) {
-            [numbers[index], numbers[emptyIndex]] = [numbers[emptyIndex], numbers[index]]
+    }
+
+    function removeInvalidIndexesB(indexes) {
+        for (let i = indexes.length - 1; i >= 0; i--) {
+            if (indexes[i] < 0 || indexes[i] > 8) {
+                indexes.splice(i, 1);
+            }
         }
-        console.log(index)
-        console.log(validMoves)
-        drawPuzzle()
+    }
+
+    function removeInvalidIndexesC(indexes) {
+        let i = 0;
+        while (i < indexes.length) {
+            if (indexes[i] < 0 || indexes[i] > 8) {
+                indexes.splice(i, 1);
+            } else {
+                i++;
+            }
+        }
+    }
+
+    function removeInvalidIndexesA(indexes) {
+        let validIndexes = [];
+        for (let i = 0; i < indexes.length; i++) {
+            const index = indexes[i];
+            if (index >= 0 && index <= 8) {
+                validIndexes.push(index);
+            }
+        }
+        return validIndexes;
     }
 
     function drawPuzzle() {

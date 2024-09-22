@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+
+
+    let aplhabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ"
+    let secretCode = "zyxwvutsrqponmlkjihgfedcba"
+
+    makeCrypticAlphabet(aplhabet)
+
+    function crypticMessage(text, aplhabetArray, secretCodeArray) {
+        let secretMessage = ''
+        for (letter of text.toUpperCase()) {
+            if (letter == " ") {
+                secretMessage += " "
+            } else {
+                let letterIndex = aplhabetArray.indexOf(letter)
+                secretMessage += (secretCodeArray[letterIndex])
+            }
+        }
+        return secretMessage
+    }
+
+    function decryptMessage(crypticText, aplhabet, crypticAlphabet) {
+        debugger
+        let message = ''
+        for (letter of crypticText) {
+            if (letter == " ") {
+                message += " "
+            }
+            else {
+                let letterIndex = crypticAlphabet.indexOf(letter)
+                message += (aplhabet[letterIndex])
+            }
+        }
+        return message
+    }
+
+    (decryptMessage('svool', aplhabet, secretCode))
+
+    function makeCrypticAlphabet(array) {
+        let newArray = []
+        count = 0
+        while (count < array.length) {
+            for (letter of aplhabet) {
+                const randomLetter = array[getRandomIndex(array)]
+                if (!newArray.includes(randomLetter)) {
+                    newArray.push(randomLetter)
+                    count++
+                }
+            }
+        }
+        return newArray
+    }
+
+
+
+    function getRandomIndex(array) {
+        return Math.floor(Math.random() * array.length)
+    }
+
+
+    crypticMessage('Jeg sender en hemmelig melding', aplhabet, secretCode)
+
+
+
+
+</script>
