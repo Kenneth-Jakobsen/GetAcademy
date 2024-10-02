@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="words.js"></script>
+</head>
+
+<body onload="generateWordPuzzles()">
+</body>
+
+</html>
+
+
+<script>
+    function generateWordPuzzles() {
+        let wordCount = 0;
+        while (wordCount < 10) {
+            let randomIndex = randomNumber();  //generate random number using the words array length
+            let firstWord = words[randomIndex].trim();           //get a random word from words array using the randomIndex
+            if (firstWord.length > 6) {                        //if the word is longer than 6 characters
+                let lastPartOffirstWord = firstWord.substr(firstWord.length - 3);    // let lastPartOffirstWord be the ending 3 letters of firstWord
+                for (let secondWord of words) {      //loop over the array words, secondWord become each word of the array words
+                    if (secondWord.length > 6 && secondWord != firstWord && secondWord.startsWith(lastPartOffirstWord)) {  //check if secondWord is longer than 6 and its not firstWord and that secondWord start with the last 3 letters of firstWord
+                        let firstPartOffirstWord = firstWord.substr(0, firstWord.length - 3);   //let firstPartOffirstWord be firstWord minus the last 3 letters
+                        let lastPartOfsecondWord = secondWord.substr(3); // let lastPartOfsecondWord be secondWord minus the 3 first letters
+                        document.body.innerHTML += /*HTML*/`
+                                <div>
+                                    ${firstPartOffirstWord}___ ___${lastPartOfsecondWord}
+                                    <button onclick="this.innerHTML = '${firstWord} ${secondWord.trim()}'">?</button>
+                                </div>
+                                `;
+                        wordCount++;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    function randomNumber() {
+        return Math.floor(Math.random() * words.length)
+    }
+
+
+
+
+
+</script>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="words.js"></script>
+</head>
+
+<body onload="generateWordPuzzles()">
+</body>
+
+</html>
+
+
+<script>
+
+    let filteredWords = words.filter(word => word.length > 6)
+
+    function generateWordPuzzles() {
+        let wordCount = 0;
+        while (wordCount < 10) {
+            if (drawPuzzle(randomWord())) {
+                wordCount++
+            }
+        }
+    }
+
+    function drawPuzzle(word) {
+        for (let secondWord of filteredWords) {
+            if (isMatch(word, secondWord)) {
+                let firstPartOfword = word.substr(0, word.length - 3);
+                let lastPartOfsecondWord = secondWord.substr(3);
+                document.body.innerHTML += puzzleHtml(word, secondWord, firstPartOfword, lastPartOfsecondWord)
+                return true
+            }
+        }
+    }
+
+    function puzzleHtml(firstWord, secondWord, firstPart, lastPart) {
+        return /*HTML*/`
+        <div>
+            ${firstPart}___ ___${lastPart}
+            <button onclick="this.innerHTML = '${firstWord} ${secondWord.trim()}'">?</button>
+        </div>
+        `
+    }
+
+    function isMatch(firstWord, secondWord) {
+        let lastPartOfword = firstWord.substr(firstWord.length - 3);
+        return secondWord != firstWord && secondWord.startsWith(lastPartOfword)
+    }
+
+
+    function randomWord() {
+        let randomIndex = randomNumber(filteredWords)
+        return filteredWords[randomIndex].trim()
+    }
+    function randomNumber(array) {
+        return Math.floor(Math.random() * array.length)
+    }
+
+</script>
