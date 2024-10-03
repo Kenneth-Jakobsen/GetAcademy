@@ -20,17 +20,32 @@
     let secondColorObj = { red: 50, green: 100, blue: 200 }
 
 
-    function updateView() {
-        document.getElementById('app').innerHTML = /*HTML*/`
-    
-    `
+
+
+    function averageRgb(colors1, colors2) {
+        return {
+            red: ((colors1.red + colors2.red) / 2),
+            green: ((colors1.green + colors2.green) / 2),
+            blue: ((colors1.blue + colors2.blue) / 2)
+        }
     }
 
-    function averageRgb(colorObj1, colorObj2) {
-
+    function inverseColor(value) {
+        return { red: 255 - value.red, green: 255 - value.green, blue: 255 - value.blue }
     }
 
 
-    updateView()
+    function createGradient(color) {
+        let color1 = color
+        let color5 = inverseColor(color1)
+        let color3 = averageRgb(color1, color5)
+        let color2 = averageRgb(color1, color3)
+        let color4 = averageRgb(color3, color5)
+        return [color1, color2, color3, color4, color5]
+    }
+
+    console.log(createGradient(firstColorObj))
+
+
 
 </script>
