@@ -1,85 +1,46 @@
 ﻿namespace PasswordGenerator
-{ 
-    class Program
+{
+ static class Program
     {
-       private static void Main(string[] args)
+       private static void Main()
        {
-           string[]? arguments = Console.ReadLine()?.Split(' ');
+            HelpText.ShowHelpText();
+            Console.WriteLine("Enter your password requirements: ");
+            var arguments = Console.ReadLine()?.Split(' ');
             var smallLetter = 0;
             var capitalLetter = 0;
             var specialChars = 0;
             var number = 0;
-            if (!IsValid(arguments))
+            if (!Validate.IsValid(arguments))
             {
-                PasswordGenerator();
+                HelpText.ShowHelpText();
+                return;
             }
-            else
+            foreach (var c in arguments[1])
             {
-                foreach (var c in arguments?[1]!)
+                switch (c)
                 {
-                    switch (c)
-                    {
-                        case 'L':
-                            capitalLetter++;
-                            break;
-                        case 'l':
-                            smallLetter++;
-                            break;
-                        case 'd':
-                            number++;
-                            break;
-                        case 's':
-                            specialChars++;
-                            break;
-                    }
+                    case 'L':
+                        capitalLetter++;
+                        break;
+                    case 'l':
+                        smallLetter++;
+                        break;
+                    case 'd':
+                        number++;
+                        break;
+                    case 's':
+                        specialChars++;
+                        break;
                 }
-
-                Console.Write($"I want my password to have {smallLetter} small letters, " +
-                              $"{capitalLetter} capital letters, " +
-                              $"{number} numbers " +
-                              $"and {specialChars} special characters " +
-                              $"and be {arguments[0]} characters long");
             }
+            Console.Write($"I want my password to have {smallLetter} small letters, " +
+                          $"{capitalLetter} capital letters, " +
+                          $"{number} numbers " +
+                          $"and {specialChars} special characters " +
+                          $"and be {arguments[0]} characters long");
        }
-
-       private static bool IsValid(string[]? args)
-       {
-           var number = int.Parse(args[0]);
-           var requirements = args[1];
-           if (number < 6 || args.Length<2) return false;
-           foreach (var c in requirements)
-           {
-               if (Char.IsDigit(c))
-               {
-                   return false;
-               }
-           }
-           return true;
-       }
-
-
-       static void PasswordGenerator()
-       {
-           ShowHelpText();
-       }
-
-       static void ShowHelpText()
-       {
-           Console.WriteLine("PasswordGenerator  " +
-                             "\nOptions:\n- l = liten bokstav\n- " +
-                             "L = stor bokstav\n- " +
-                             "d = siffer\n- " +
-                             "s = spesialtegn (!\"#\u00a4%&/(){}[]\n-" +
-                             "lengde skal være min 6 tegn\n" +
-                             "Eksempel: PasswordGenerator 14 lLssdd\n" +
-                             "    betyr\n " +
-                             "    Min. 1 liten bokstav\n    " +
-                             "    Min. 1 1 stor bokstav\n   " +
-                             "    Min. 2 spesialtegn\n     " +
-                             "    Min. 2 sifre\n   " +
-                             "    Lengde på passordet skal være 14 tegn ");
-       }
-
+       
     }
 }
 
