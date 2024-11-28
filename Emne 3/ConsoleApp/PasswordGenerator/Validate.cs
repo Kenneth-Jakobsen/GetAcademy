@@ -21,4 +21,26 @@ public static class Validate
 
         return true;
     }
+
+    public static string CreatePattern(string?[] args)
+    {
+        int passwordLength = int.Parse(args[0] ?? string.Empty);
+        string? userPattern = args[1];
+        string pattern = "";
+        while (pattern.Length < passwordLength)
+        {
+            pattern += userPattern;
+        }
+
+        while (pattern.Length > passwordLength)
+        {
+            pattern = pattern.Substring(0, passwordLength);
+        }
+
+        while (pattern.Length < passwordLength)
+        {
+            pattern += "l";
+        }
+        return pattern;
+    }
 }

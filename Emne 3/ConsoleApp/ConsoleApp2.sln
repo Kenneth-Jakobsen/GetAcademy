@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "Cons
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PasswordGenerator", "PasswordGenerator\PasswordGenerator.csproj", "{1B68F859-67D6-4366-A317-5EDE0563C154}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdGaate", "OrdGaate\OrdGaate.csproj", "{271740A4-53C8-45A0-80D7-5C2FF1AF076E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{1B68F859-67D6-4366-A317-5EDE0563C154}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B68F859-67D6-4366-A317-5EDE0563C154}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B68F859-67D6-4366-A317-5EDE0563C154}.Release|Any CPU.Build.0 = Release|Any CPU
+		{271740A4-53C8-45A0-80D7-5C2FF1AF076E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{271740A4-53C8-45A0-80D7-5C2FF1AF076E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{271740A4-53C8-45A0-80D7-5C2FF1AF076E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{271740A4-53C8-45A0-80D7-5C2FF1AF076E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -38,5 +44,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C3F0A3AE-9003-4026-AB06-6C232B5CCA4C} = {55F35F5D-95F3-4043-96CF-3D61A2E763A6}
+		{271740A4-53C8-45A0-80D7-5C2FF1AF076E} = {55F35F5D-95F3-4043-96CF-3D61A2E763A6}
 	EndGlobalSection
 EndGlobal
