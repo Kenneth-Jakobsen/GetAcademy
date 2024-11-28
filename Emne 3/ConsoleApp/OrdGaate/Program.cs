@@ -9,11 +9,10 @@ public static class Program
         string filePath = "ordliste.txt";
         string[] words = GetWords(filePath);
         var wordCount = 0;
-        while (wordCount < 200)
+        while (wordCount <=200)
         {
-            FindMatch(words);
+            if (FindMatch(words)) wordCount++; 
             Console.WriteLine($"Found {wordCount} words");
-            wordCount++;
         }
     }
 
@@ -34,7 +33,7 @@ public static class Program
         return words.ToArray();
     }
 
-    static void FindMatch(string[] words)
+    static bool FindMatch(string[] words)
     {
       var randomIndex = Random.Next(words.Length);
       var randomWord = words[randomIndex];
@@ -43,10 +42,10 @@ public static class Program
           if (IsLastPartOfFirstWordEqualToFirstPartOfSecondWord(randomWord, word))
           {
               Console.WriteLine($"Word: {randomWord} - {word.Substring(0,3)} - {word}");
-              return;
+              return true;
           }
-          
       }
+      return false;
     }
 
     
