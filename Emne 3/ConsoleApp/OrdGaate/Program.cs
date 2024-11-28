@@ -2,15 +2,22 @@
 
 public static class Program
 {
+    private static readonly Random Random = new Random();
     private static void Main(string[] args)
-    { 
+    {
         
         string filePath = "ordliste.txt";
-       string[] words = GetWords(filePath);
-       FindMatch(words);
+        string[] words = GetWords(filePath);
+        var wordCount = 0;
+        while (wordCount < 200)
+        {
+            FindMatch(words);
+            Console.WriteLine($"Found {wordCount} words");
+            wordCount++;
+        }
     }
 
-    static string[] GetWords(string args)
+   static string[] GetWords(string args)
     {
         var textData = File.ReadAllLines(args);
         var words = new List<string>();
@@ -21,17 +28,34 @@ public static class Program
                 && word.Length is > 6 and < 10
                 && !word.Contains('-'))
             {
-                var lastThreeLetters = word.Length - 3;
-                Console.WriteLine($"Word: {word}, lastLetters:{word.Substring(lastThreeLetters)}");
                 words.Add(word);
             }
         }
         return words.ToArray();
     }
 
-    static string[] FindMatch(string[] words)
+    static void FindMatch(string[] words)
     {
-        return [""];
+      var randomIndex = Random.Next(words.Length);
+      var randomWord = words[randomIndex];
+      foreach (var word in words)
+      {
+          if (IsLastPartOfFirstWordEqualToFirstPartOfSecondWord(randomWord, word))
+          {
+              Console.WriteLine($"Word: {randomWord} - {word.Substring(0,3)} - {word}");
+              return;
+          }
+          
+      }
     }
+
+    
+    private static bool IsLastPartOfFirstWordEqualToFirstPartOfSecondWord(string word1, string word2)
+    {
+        var lastPartOfFirstWord = word1.Substring(word1.Length-3);
+        var firstPartOfSecondWord = word2.Substring(0,3);
+        return lastPartOfFirstWord == firstPartOfSecondWord;
+    }
+
 
 }
