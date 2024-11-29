@@ -39,7 +39,7 @@
 
 
     function nextPage() {
-        if (currentPage > 0 && currentPage != 10) {
+        if (currentPage > 0 && currentPage !== 10) {
             currentPage++
         }
         displayItems(items);
@@ -47,7 +47,7 @@
     }
 
     function filterList(array) {
-        return array.filter(value => value % 3 == 0)
+        return array.filter(value => value % 3 === 0)
     }
 
     function prevPage() {

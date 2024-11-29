@@ -29,7 +29,7 @@ function sortByLength(values) {
 }
 
 function myCompareByLength(a, b) {
-    if (a.length == b.length) return 0;
+    if (a.length === b.length) return 0;
     return a.length > b.length ? 1 : -1;
 }
 
@@ -60,7 +60,7 @@ function filterByText(colors, text) {
 
 function findFirstColorNameOfLength(colors, length) {
     for (let colorName of colors) {
-        if (colorName.length == length) return colorName;
+        if (colorName.length === length) return colorName;
     }
     return null;
 }
@@ -68,7 +68,7 @@ function findFirstColorNameOfLength(colors, length) {
 
 function hasColorNameOfLength(colors, length) {
     for (let colorName of colors) {
-        if (colorName.length == length) return true;
+        if (colorName.length === length) return true;
     }
     return false;
 }
