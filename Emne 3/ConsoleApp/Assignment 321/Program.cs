@@ -1,12 +1,17 @@
 ﻿namespace Assignment_321;
 
-class Program
+internal class Program
 {
-    static void Main(string[] args)
+    public static void Main(string[] args)
     {
-        Console.WriteLine("Enter a text");
-        string? text = Console.ReadLine();
-        Counter.ShowCounts(text);
-        
+        var counter = new CharCounter();
+        string input="something";
+        while (!string.IsNullOrEmpty(input))
+        { 
+            Console.WriteLine("Enter text: ");
+            input = Console.ReadLine();
+            counter.AddText(input);
+            counter.ShowCounts();
+        }
     }
 }
