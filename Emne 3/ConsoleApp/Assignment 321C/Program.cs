@@ -1,14 +1,19 @@
 ﻿namespace Assignment_321C;
 
- class Program
+internal static class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
-       var  firstCoin = new Coin
-       {
-           Amount = 7,
-           Value = 1
-       };
-       firstCoin.GetCoins();
+        var myCoins = new Coin();
+        while (true)
+        {
+            if (myCoins.SetCoin())
+            {
+                myCoins.SetAmount();
+                myCoins.GetSum();
+                break;
+            }
+            Console.WriteLine("No such coin");
+        }
     }
 }
