@@ -6,18 +6,18 @@ public static class Program
     private static void Main(string[] args)
     {
         
-        string filePath = "ordliste.txt";
-        string[] words = GetWords(filePath);
+        const string filePath = "ordliste.txt";
+        var words = GetWords(filePath);
         var wordCount = 0;
         
-        while (wordCount <=200)
+        while (wordCount <200)
         {
             var randomWord = words[Random.Next(0, words.Length)];
             var word = FindMatch(words, randomWord);
             if (word.Length > 0)
             { 
-                Console.WriteLine($"{randomWord} - {randomWord.Substring(randomWord.Length - 3)} - {word}  - {wordCount}");
                 wordCount++;
+                Console.WriteLine($"{randomWord} - {randomWord[^3..]} - {word}  - {wordCount} Words");
                 
             }
         }
@@ -54,8 +54,8 @@ public static class Program
     
     private static bool IsLastPartOfFirstWordEqualToFirstPartOfSecondWord(string word1, string word2)
     {
-        var lastPartOfFirstWord = word1.Substring(word1.Length-3);
-        var firstPartOfSecondWord = word2.Substring(0,3);
+        var lastPartOfFirstWord = word1[^3..];
+        var firstPartOfSecondWord = word2[..3];
         return lastPartOfFirstWord == firstPartOfSecondWord;
     }
 
