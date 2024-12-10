@@ -9,7 +9,7 @@ internal class Program
         while (!string.IsNullOrEmpty(input))
         { 
             Console.WriteLine("Enter text: ");
-            input = Console.ReadLine();
+            input = Console.ReadLine() ?? string.Empty;
             counter.AddText(input);
             counter.ShowCounts();
         }

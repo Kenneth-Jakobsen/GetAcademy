@@ -3,7 +3,7 @@
 public static class Program
 {
     private static readonly Random Random = new Random();
-    private static void Main(string[] args)
+    private static void Main()
     {
         
         const string filePath = "ordliste.txt";

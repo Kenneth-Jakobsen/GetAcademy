@@ -1,6 +1,6 @@
 ﻿namespace Assignment_323;
 
-public class Match(string myBet)
+public class Match(string? myBet)
 {
     private  int _homeGoals;
     private  int _awayGoals;

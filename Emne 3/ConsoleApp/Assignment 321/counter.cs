@@ -3,26 +3,26 @@ namespace Assignment_321;
 
 internal class CharCounter
 {
-    private string text = string.Empty;
-    private int[] counts = new int[250];
+    private string _text = string.Empty;
+    private readonly int[] _counts = new int[250];
 
     public void AddText(string message)
     {
-        text = message;
+        _text = message;
     }
 
     public void ShowCounts()
     {
-            foreach (var character in text)
+            foreach (var character in _text)
             {
-                counts[character]++;
+                _counts[character]++;
             }
-            for (var i = 0; i < counts.Length; i++)
+            for (var i = 0; i < _counts.Length; i++)
             {
-                if (counts[i] > 0)
+                if (_counts[i] > 0)
                 {
                     var character = (char)i;
-                    Console.WriteLine(character + ": " + counts[i]);
+                    Console.WriteLine(character + ": " + _counts[i]);
                 } 
             }
     }
