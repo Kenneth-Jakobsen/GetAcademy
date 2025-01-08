@@ -13,7 +13,7 @@ public class Match(string? myBet)
         else _awayGoals++;
     }
     
-    private bool IsBetCorrect()
+    public bool IsBetCorrect()
     {
         var result = _homeGoals == _awayGoals ? "U" : _homeGoals > _awayGoals ? "H" : "B";
         return result == myBet;
