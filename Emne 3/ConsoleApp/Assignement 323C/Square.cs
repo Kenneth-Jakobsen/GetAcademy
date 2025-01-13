@@ -2,7 +2,7 @@
 
 public class Square
 {
-    private readonly bool _isEmpty = true;
+    private  bool _isEmpty = true;
     private string _state = string.Empty;
 
     public bool IsEmpty()
@@ -14,13 +14,13 @@ public class Square
     {
         return _state;
     }
+    
 
     public void SetState(bool state)
     {
-        if (!_isEmpty)
-        {
-            _state = state ? "player 1" : "player 2";
-        }
+        if (_isEmpty) return;
+        _state = state ? "player 1" : "player 2";
+        _isEmpty = false;
     }
     
 }
