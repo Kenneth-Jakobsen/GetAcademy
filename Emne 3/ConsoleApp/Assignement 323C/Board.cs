@@ -7,6 +7,7 @@ public class Board
 
     public void Mark(string position)
     {
+        position = position.ToUpper();
         var column = position[0];
         var row = position[1];
         var colIndex = column - 'A';
