@@ -2,8 +2,8 @@
 
 public class GameConsole
 {
-    public static void Show()
+    public static void Show(Board board)
     {
-        Console.WriteLine("  a b c\n \u250c\u2500\u2500\u2500\u2500\u2500\u2510\n1\u2502o    \u2502\n2\u2502    o\u2502\n3\u2502\u00d7 \u00d7  \u2502\n \u2514\u2500\u2500\u2500\u2500\u2500\u2518");
+        Console.WriteLine(board.Squares[0].IsEmpty());
     }
 }

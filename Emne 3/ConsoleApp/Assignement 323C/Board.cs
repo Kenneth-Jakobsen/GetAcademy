@@ -2,5 +2,5 @@
 
 public class Board
 {
-    Square[] _squares = new Square[9];
+    public readonly Square[] Squares = new Square[9];
 }

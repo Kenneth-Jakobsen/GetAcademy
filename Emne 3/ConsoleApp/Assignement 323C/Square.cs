@@ -2,7 +2,7 @@
 
 public class Square
 {
-    private bool _isEmpty = true;
+    private readonly bool _isEmpty = true;
     private string _state = string.Empty;
 
     public bool IsEmpty()
