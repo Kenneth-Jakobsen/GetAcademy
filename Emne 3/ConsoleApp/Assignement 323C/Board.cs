@@ -2,8 +2,15 @@
 
 public class Board
 {
-    private Square[] _squares = new Square[9];
+    public Square[] _squares = new Square[9];
 
+    public Board()
+    {
+        for (var i = 0; i < _squares.Length; i++)
+        {
+            _squares[i] = new Square();
+        }
+    }
 
     public void Mark(string position)
     {
